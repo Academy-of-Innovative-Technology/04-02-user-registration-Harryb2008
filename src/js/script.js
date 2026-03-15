@@ -1,7 +1,7 @@
-// Select the form
+
 const form = document.querySelector("form");
 
-// Display elements
+
 const savedFirstName = document.querySelector("#savedFirstName");
 const savedLastName = document.querySelector("#savedLastName");
 const savedEmail = document.querySelector("#savedEmail");
@@ -16,12 +16,12 @@ const loadUserBtn = document.querySelector("#loadUserBtn");
 const clearUserBtn = document.querySelector("#clearUserBtn");
 
 
-// FORM SUBMIT
+
 form.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    // Collect values
+    
     const firstName = document.querySelectorAll(".form-control")[0].value;
     const lastName = document.querySelectorAll(".form-control")[1].value;
     const email = document.querySelectorAll(".form-control")[2].value;
@@ -31,7 +31,7 @@ form.addEventListener("submit", function(event) {
 
     const accountType = document.querySelector('input[name="accountType"]:checked').nextElementSibling.textContent;
 
-    // Create user object
+    
     const user = {
         firstName: firstName,
         lastName: lastName,
@@ -42,7 +42,7 @@ form.addEventListener("submit", function(event) {
         about: about
     };
 
-    // Save to LocalStorage
+    
     const userJSON = JSON.stringify(user);
     localStorage.setItem("registeredUser", userJSON);
 
@@ -52,7 +52,7 @@ form.addEventListener("submit", function(event) {
 });
 
 
-// LOAD USER FROM STORAGE
+
 function loadUser() {
 
     const savedString = localStorage.getItem("registeredUser");
@@ -67,7 +67,7 @@ function loadUser() {
 }
 
 
-// DISPLAY USER DATA
+
 function displayUser(userObj) {
 
     savedFirstName.textContent = userObj.firstName;
@@ -82,7 +82,7 @@ function displayUser(userObj) {
 }
 
 
-// CLEAR SAVED USER
+
 function clearUser() {
 
     localStorage.removeItem("registeredUser");
@@ -92,10 +92,10 @@ function clearUser() {
 }
 
 
-// BUTTON EVENTS
+
 loadUserBtn.addEventListener("click", loadUser);
 clearUserBtn.addEventListener("click", clearUser);
 
 
-// AUTO LOAD ON PAGE REFRESH
+
 loadUser();
